@@ -1,6 +1,7 @@
 const seznamSirin = [13, 44.6765765, 12.432542, 45.432423]
 const seznamDolzin = [44, 12.432542, 45.432423, 3.321312]
 const natancnost = 1
+const toleranca = 0.1
 
 const inputBtn = document.querySelector("#inputBtn");
 const dolzina = document.querySelector("#dolzina");
@@ -29,7 +30,6 @@ function vnesiKoordinate(){
         }
 
     if (napakaMin < natancnost){
-        console.log(coordIdMin)
         sirinaErr.textContent = "Čestitam";
         dolzinaErr.textContent = "Čestitam";
         slika.src = "slike/slika" + (coordIdMin +1) + ".png"
@@ -37,8 +37,15 @@ function vnesiKoordinate(){
 
     else{
         slika.src = "";
-        sirinaErr.textContent = "Zmotil si se za: " + Math.abs(vnesenaSirina - seznamSirin[coordIdMin]);
-        dolzinaErr.textContent = "Zmotil si se za: " + Math.abs(vnesenaDolzina - seznamDolzin[coordIdMin]);
+        if (napakaMin < toleranca){
+            sirinaErr.textContent = "Zmotil si se za : " + Math.abs(vnesenaSirina - seznamSirin[coordIdMin]);
+            dolzinaErr.textContent = "Zmotil si se za: " + Math.abs(vnesenaDolzina - seznamDolzin[coordIdMin]);
+        }
+        else{
+            sirinaErr.textContent = "Zmotil si se za več kot: " + toleranca;
+            dolzinaErr.textContent = "Zmotil si se za več kot: " + toleranca;
+        }
+
     }
 
 
