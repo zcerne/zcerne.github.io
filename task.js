@@ -29,6 +29,7 @@ function vnesiKoordinate(){
         }
 
     if (napakaMin < natancnost){
+        console.log(coordIdMin)
         sirinaErr.textContent = "Čestitam";
         dolzinaErr.textContent = "Čestitam";
         slika.src = "slike/slika" + (coordIdMin +1) + ".png"
